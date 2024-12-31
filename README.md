@@ -1,57 +1,64 @@
-# moonreader2html
+# MooNotes-html
 
-# What
-A simple tool to convert you highlights from Moon+ Reader to a beautiful and portable HTML file.
+# ¿Qué es?
+Una simple herramienta para convertir lo que subrrayas en Moon+ Reader a un hermoso archivo HTML.
 
-# Why
-Moon+ Reader is the most popular and the most customizable reader out there in the market, but getting your highlights out is next to impossible. This will help you convert it to a portable universal HTML format.
+# ¿Por qué?
+Moon+ Reader es el lector de libros electrónicos más popular, y el que uso en mi flujo de lectura para resumir libros. Este nuevo archivo HTML te permitirá hacer más resúmenes o diagramas junto a la IA de tu predicción.
+
+Este repositorio es una actualización y adaptación al español del trabajo de moonreader2html.
 
 
-**Convert Moon+ Reader highlight export to readable HTML**
+**Convertir el archivo de Moon+ Reader a un, muy agradable,  HTML leíble**
 
-This utility makes it convert your highlights from [Moon+ Reader](https://play.google.com/store/apps/details?id=com.flyersoft.moonreaderp&hl=en&gl=US) into a single file HTML page.
+La app la puedes descargar desde [Moon+ Reader](https://play.google.com/store/apps/details?id=com.flyersoft.moonreaderp&hl=en&gl=US) por silo necesitas.
 
-## Installation
-Clone this repository and install the python packages `jinja2` and `titlecase`.
+## Instalación
+Clona estos repositorios e instala los paquetes python `jinja2` y `titlecase`.
 
-## Usage
-1. Open your book on Moon+ Reader say `Alice.epub` . Open the Chapters tab, go to the Bookmarks tab, click the share icon and choose the export to file from the menu.
-2. This will generate a `Alice.mrexpt`, click on OK and save it on your phone, copy it over to a PC.
-3. Get the book cover from the internet, it should of format `.png` and named `cover.png`
-4.  Run this script:
+## ¿Cómo usarlo?
+1. Abre tu libro en Moon+ Reader por ejemplo `Sangurimas.epub` . Abre la pestaña Capítulos, ve a la pestaña Marcadores, haz clic en el icono compartir y elige en el menú la opción exportar a archivo.
+2. Esto generará un `Sangurimas.mrexpt`, haz clic en Aceptar y guárdalo en tu teléfono, cópialo en un PC.
+3. 3. Obtén la portada del libro de internet, debe tener el formato `.png` y el nombre `cover.png`.
+4.  Ejecuta este script:
 ```bash
-python mrexpt2html.py Alice.mrexpt
+python moonotes.py Sangurimas.mrexpt
 ```
 
-- The Book name and Author might not be captured, to add them using the flags
+- Es posible que el nombre del libro y el autor no estén capturados, para añadirlos utiliza las banderas
 ```bash
-python mrexpt2html.py Alice.mrexpt -a "Lewis Carroll"
+python moonotes.py Sangurimas.mrexpt -a "José de la Cuadra"
 ```
 
 
-# Here is a simple output of my highlights from Make Time
+
+
+
+# Aquí hay un ejemplo del archivo html de las líneas resaltadas.
 
 <img src="./sample.png"></img>
 
-### Options
-**`debug`**
-Turned on by default, and ensures that the book and file name are unique (by adding a timestamp). This is to allow multiple exports of the same book. This is convenient for testing this script or for having multiple reviews, but you can turn it off by following the below code: 
+### Opciones
+**Depurar
+Activado por defecto, y asegura que el libro y el nombre del archivo son únicos (añadiendo una marca de tiempo). Esto es para permitir múltiples exportaciones del mismo libro. Esto es conveniente para probar este script o para tener múltiples revisiones, pero puede desactivarlo siguiendo el siguiente código:
 ```bash
-python ./mrexpt2html.py --debug=false my-book-highlights.mrexpt
+python ./moonotes.py --debug=false my-book-highlights.mrexpt
 ```
-
 
 **`titlecap`**
-Turned on by default and converts chapter headings (highlights with notes like .h1/.h2/.h3) to *Title Cap* if they are *ALL CAPITAL* or *all lowercase*. This isn't specific to Moon+ Reader, but it's nice to be able to make this change - many books use ugly allcaps for chapter headings for typographical reasons but outside of the book formatting they're just not that nice. You can turn this off like this:
+Se activa por defecto y convierte los títulos de los capítulos (resaltados con notas como .h1/.h2/.h3) a *Title Cap* si son *ALL CAPITAL* o *all lowercase*. Esto no es específico de Moon+ Reader, pero es bueno poder hacer este cambio - muchos libros utilizan feas mayúsculas para los títulos de los capítulos por razones tipográficas, pero fuera del formato del libro no son tan agradables. Puedes desactivarlo de la siguiente manera:
 
 ```bash
-python ./mrexpt2html.py --titlecap=false my-book-highlights.mrexpt
+python ./moonotes.py --titlecap=false my-book-highlights.mrexpt
 ```
 
 
-**`author`**
-Specify the author(s) which isn't available in the .mrexpt file. If unspecified the author is written as 'Unknown'.
+
+**Autor
+Especifica el autor o autores que no están disponibles en el archivo .mrexpt. Si no se especifica, el autor se escribe como "Desconocido".
 
 ---
 
-Enjoy, let me know if there are any issues or suggestions by filing issues, and of course pull requests are very welcome.
+Disfrute, hágame saber si hay algún problema o sugerencia mediante la presentación de cuestiones, y por supuesto pull requests son muy bienvenidos.
+
+Actualizado Diciembre 2024
